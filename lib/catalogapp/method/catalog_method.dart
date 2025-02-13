@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Catalog method class extends with Change Notifier 
 class CatalogMethod extends ChangeNotifier{
+  //List of maps which defined leading, title and trailing widgets of Every single listtile
   List<Map<dynamic,dynamic>> items = [
     {
     'leading': Container(height: 30,width: 30,color: Colors.amber,),
@@ -67,19 +69,27 @@ class CatalogMethod extends ChangeNotifier{
     'action': null,
     }
   ];
-
+  //List where title of every added Listtile insert
   List<Widget> cartItem = [];
+  //Price of single Product
   int eachPrice = 20;
+  //initial sum of all added product
   late int sumofEach
    = 0;
+   //changing Icon/rebuilding trailing widgets child method, index is dynamic parameter
   void changingIcon(index) {
+    //When call items[index]['action'] become an Icon of name check
      items[index]['action']=const Icon(Icons.check,color: Colors.black);
+     //Inserted added/selected items in upper cartItem list at 0 index 
      cartItem.insert(0,items[index]['title']);
+     //simple summerizing each selected/added product price
      sumofEach =sumofEach+(eachPrice*1);
+     //printing cartItem for clarities sake
      log(cartItem.toString());
-     log("items[index]: ${items[index]}");
+     //state changed triggring method
      notifyListeners();
   }
   
 }
+//object of class CatalogMethod
 CatalogMethod catalogMethod = CatalogMethod();
