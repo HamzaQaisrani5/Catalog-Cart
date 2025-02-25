@@ -89,6 +89,14 @@ class CatalogMethod extends ChangeNotifier{
      //state changed triggring method
      notifyListeners();
   }
+  void removeCartItem(index){
+    print('Remove ${items[index]}');
+    var remove = cartItem.remove(cartItem[index]);
+    print("remove $remove");
+    
+    sumofEach-=20;
+    notifyListeners();
+  }
   
 }
 //object of class CatalogMethod
